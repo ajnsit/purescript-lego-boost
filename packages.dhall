@@ -114,7 +114,14 @@ let mkPackage =
 let upstream =
       https://raw.githubusercontent.com/purescript/package-sets/psc-0.12.3-20190403/src/packages.dhall sha256:53f95298ca7734c037a0ebfd2ce982c004d8377ebc01cc3387f5a61508c6b8ac
 
-let overrides = {=}
+let overrides =
+  { concur-react =
+      upstream.concur-react //
+        { version = "master"
+        -- , repo = "../purescript-concur"
+        , repo = "https://github.com/ajnsit/purescript-concur.git"
+        }
+  }
 
 let additions = {=}
 

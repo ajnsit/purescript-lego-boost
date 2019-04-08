@@ -1,4 +1,5 @@
-var Boost = require("node-poweredup");
+var _Boost = require("node-poweredup/dist/node/index-browser");
+var Boost = window.PoweredUP;
 
 exports._newBoostInstance = function() {
   return new Boost.PoweredUP();
