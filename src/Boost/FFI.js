@@ -4,9 +4,28 @@ exports._newBoostInstance = function() {
   return new Boost.PoweredUP();
 };
 
+exports._isWebBluetoothAvailable = function() {
+  return Boost.isWebBluetooth;
+};
+
 exports._initiateScan = function(boost) {
   return function() {
     boost.scan();
+  };
+};
+
+exports._getConnectedHubs = function(boost) {
+  return function() {
+    return boost.getConnectedHubs();
+  };
+};
+
+
+exports._getConnectedHubByUuid = function(boost) {
+  return function(uuid) {
+    return function() {
+      return boost.getConnectedHubByUuid(uuid);
+    };
   };
 };
 
@@ -36,6 +55,12 @@ exports._connect = function(hub) {
   };
 };
 
+exports._disconnect = function(hub) {
+  return function() {
+    return hub.disconnect();
+  };
+};
+
 exports._sleep = function(hub) {
   return function(duration) {
     return function() {
@@ -56,6 +81,15 @@ exports._setMotorSpeed = function(hub) {
   };
 };
 
+exports._getAvailableLedColors = Boost.Consts.ColorNames;
+
+exports._setLedColor = function(hub) {
+  return function(color) {
+    return function() {
+      return hub.setLEDColor(color);
+    };
+  };
+};
 
 exports.debugLog = function(x) {
   return function() {
